@@ -1,0 +1,6 @@
+.containerCenter {
+	display:flex;
+}
+.containerCenter div{
+	margin-right: 10px;
+}

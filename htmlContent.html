@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="cssStyle.css">
+		<script src="script.js"></script>
+		<title>Geeking Simulator</title>
+	</head>
+	<body onload="tick()">
+		<h1>GEEKING SIMULATOR</h1>
+		<div class = "containerTop">
+			GeekPoints™: <div id = "amountDisplay"></div>
+		</div>
+		<div class = "containerCenter">
+			<div><button type="button" onclick="geekClick()">Geek</button></div>
+			<div><button type="button" onclick="upgradeGeekClick()">Upgrade</button></div>
+			<div id = "upgradeDisplay"></div>
+			<div id = "costDisplay"></div>
+		</div>
+		<div class = "containerCenter">
+			<div><button type="button" onclick="upgradeAutoGeekClick()">Buy Auto-Geeker</button></div>
+			<div id = "upgradeAutoGeekDisplay"></div>
+			<div id = "costAutoGeekDisplay"></div>
+		</div>
+	</body>
+</html>
