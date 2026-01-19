@@ -4,3 +4,6 @@
 .containerCenter div{
 	margin-right: 10px;
 }
+.resetContainer {
+	position: absolute; bottom: 0px;
+}
