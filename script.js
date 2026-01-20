@@ -83,21 +83,21 @@ function setNewAmount() {
 	let tickspeed = Number(localStorage.getItem("tickspeed"));
 	let tickCost = Number(localStorage.getItem("tickCost"));
     let amountDisplay = document.getElementById("amountDisplay");
-    amountDisplay.innerHTML = Number(geekAmount).toFixed(2);
+    amountDisplay.innerHTML = ("GeekPoints™: " + Number(geekAmount).toFixed(2));
 	let upgradeDisplay = document.getElementById("upgradeDisplay");
-    upgradeDisplay.innerHTML = (" Times upgraded: " + upgradeAmount);
+    upgradeDisplay.innerHTML = (upgradeAmount);
 	let costDisplay = document.getElementById("costDisplay");
     costDisplay.innerHTML = (" Upgrade cost: " + Number(upgradeCost).toFixed(2));
 	let upgradeAutoGeekDisplay = document.getElementById("upgradeAutoGeekDisplay");
-    upgradeAutoGeekDisplay.innerHTML = (" Times upgraded: " + upgradeAutoAmount);
+    upgradeAutoGeekDisplay.innerHTML = (upgradeAutoAmount);
 	let costAutoGeekDisplay = document.getElementById("costAutoGeekDisplay");
     costAutoGeekDisplay.innerHTML = (" Upgrade cost: " + Number(upgradeAutoCost).toFixed(2));
 	let upgradeAutoGeekDisplayV2 = document.getElementById("upgradeAutoGeekDisplayV2");
-    upgradeAutoGeekDisplayV2.innerHTML = (" Times upgraded: " + upgradeAutoV2Amount);
+    upgradeAutoGeekDisplayV2.innerHTML = (upgradeAutoV2Amount);
 	let costAutoGeekDisplayV2 = document.getElementById("costAutoGeekDisplayV2");
     costAutoGeekDisplayV2.innerHTML = (" Upgrade cost: " + Number(upgradeAutoV2Cost).toFixed(2));
 	let tickspeedDisplay = document.getElementById("tickspeedDisplay");
-    tickspeedDisplay.innerHTML = (" Tickspeed: " + tickspeed);
+    tickspeedDisplay.innerHTML = (" Tickspeed: " + Number(tickspeed).toFixed(2));
 	let costTickDisplay = document.getElementById("costTickDisplay");
     costTickDisplay.innerHTML = (" Upgrade cost: " + Number(tickCost).toFixed(2));
 }

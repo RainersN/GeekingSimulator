@@ -9,30 +9,36 @@
 	</head>
 	<body onload="tick()">
 		<h1>GEEKING SIMULATOR</h1>
-		<div class = "containerTop">
-			GeekPoints™: <div id = "amountDisplay"></div>
-		</div>
-		<div class = "containerCenter">
-			<div><button type="button" onclick="geekClick()">Geek</button></div>
-			<div><button type="button" onclick="upgradeGeekClick()">Upgrade</button></div>
-			<div id = "upgradeDisplay"></div>
-			<div id = "costDisplay"></div>
-		</div>
-		<div class = "containerCenter">
-			<div><button type="button" onclick="upgradeAutoGeekClick()">Buy Auto-Geeker™</button></div>
-			<div id = "upgradeAutoGeekDisplay"></div>
-			<div id = "costAutoGeekDisplay"></div>
-			<div><button type="button" onclick="upgradeAutoGeekClickV2()">Buy Auto-Geeker v2™</button></div>
-			<div id = "upgradeAutoGeekDisplayV2"></div>
-			<div id = "costAutoGeekDisplayV2"></div>
-		</div>
-		<div class = "containerCenter">
-			<div><button type="button" onclick="upgradeTickspeed()">Increase Tickspeed</button></div>
-			<div id = "tickspeedDisplay"></div>
-			<div id = "costTickDisplay"></div>
-		</div>
-		<div class = "resetContainer">
-			<div><button type="button" onclick="reset()">RESET</button></div>
+		<div class = "container">
+			<div class = "containerLeft">
+				<img src="https://cdn3.emoji.gg/emojis/3430_epstein.png" alt="Epstein" class = "Epstein">
+				<div class = "resetContainer">
+					<div><button type="button" onclick="reset()">RESET</button></div>
+				</div>
+			</div>
+			<div class = "containerCenter">
+				<div id = "amountDisplay"></div>
+				<div><button type="button" class = "geekButton" onclick="geekClick()">Geek</button></div>
+			</div>
+			
+			<div class = "containerRight">
+				<div class = "containerUpgrade">
+					<div><button type="button" onclick="upgradeGeekClick()">Upgrade Click Efficiency <span id = "upgradeDisplay"></span><br><span id = "costDisplay"></span></button></div>
+				</div>
+				<div class = "containerUpgrade">
+					<div><button type="button" onclick="upgradeAutoGeekClick()">Buy Auto-Geeker™ <span id = "upgradeAutoGeekDisplay"></span><br><span id = "costAutoGeekDisplay"></span></button></div>
+					<div id = "upgradeAutoGeekDisplay"></div>
+					<div id = "costAutoGeekDisplay"></div>
+				</div>
+				<div class = "containerUpgrade">
+					<div><button type="button" onclick="upgradeAutoGeekClickV2()">Buy Auto-Geeker v2™ <span id = "upgradeAutoGeekDisplayV2"></span><br><span id = "costAutoGeekDisplayV2"></span></button></div>
+				</div>
+				<div class = "containerUpgrade">
+					<div><button type="button" onclick="upgradeTickspeed()"><span id = "tickspeedDisplay"></span><br><span id = "costTickDisplay"></span></button></div>
+					<div id = "tickspeedDisplay"></div>
+					<div id = "costTickDisplay"></div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

@@ -1,9 +1,53 @@
 .containerCenter {
 	display:flex;
-}
-.containerCenter div{
-	margin-right: 10px;
+	flex-direction: column;
 }
 .resetContainer {
 	position: absolute; bottom: 0px;
+}
+h1 {
+	text-align:center;
+}
+.container {
+	display:flex;
+	justify-content: space-between;
+}
+.containerLeft {
+	display:flex;
+	flex-direction: column;
+	width:10%;
+}
+.containerRight {
+	display:flex;
+	flex-direction: column;
+}
+.containerRight button{
+	font-size:16px;
+}
+.containerUpgrade{
+	display:flex;
+}
+.geekButton {
+	width: 200px; 
+	height: 50px;
+	font-size:24px;
+	margin-top:80px;
+}
+img{
+	width: 200%;
+	height: auto;
+}
+.Epstein {
+	animation: rotation 6s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+#amountDisplay {
+	font-size:24px;
 }
