@@ -33,12 +33,11 @@ h1 {
 	font-size:24px;
 	margin-top:80px;
 }
-img{
-	width: 200%;
-	height: auto;
-}
 .Epstein {
 	animation: rotation 6s infinite linear;
+	width: 80%;
+	height: auto;
+	margin-top: 50px;
 }
 @keyframes rotation {
   from {
