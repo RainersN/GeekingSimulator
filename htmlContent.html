@@ -7,7 +7,7 @@
 		<script src="script.js"></script>
 		<title>Geeking Simulator</title>
 	</head>
-	<body onload="tick()">
+	<body onload="pageLoad()">
 		<h1>GEEKING SIMULATOR</h1>
 		<div class = "container">
 			<div class = "containerLeft">
@@ -27,16 +27,15 @@
 				</div>
 				<div class = "containerUpgrade">
 					<div><button type="button" onclick="upgradeAutoGeekClick()">Buy Auto-Geeker™ <span id = "upgradeAutoGeekDisplay"></span><br><span id = "costAutoGeekDisplay"></span></button></div>
-					<div id = "upgradeAutoGeekDisplay"></div>
-					<div id = "costAutoGeekDisplay"></div>
 				</div>
 				<div class = "containerUpgrade">
 					<div><button type="button" onclick="upgradeAutoGeekClickV2()">Buy Auto-Geeker v2™ <span id = "upgradeAutoGeekDisplayV2"></span><br><span id = "costAutoGeekDisplayV2"></span></button></div>
 				</div>
 				<div class = "containerUpgrade">
 					<div><button type="button" onclick="upgradeTickspeed()"><span id = "tickspeedDisplay"></span><br><span id = "costTickDisplay"></span></button></div>
-					<div id = "tickspeedDisplay"></div>
-					<div id = "costTickDisplay"></div>
+				</div>
+				<div class = "containerUpgrade">
+					<div><button type="button" onclick="upgradePower()"><span id = "powerDisplay"></span><br><span id = "costPowerDisplay"></span></button></div>
 				</div>
 			</div>
 		</div>
