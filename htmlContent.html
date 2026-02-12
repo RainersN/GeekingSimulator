@@ -4,15 +4,20 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="cssStyle.css">
-		<script src="script.js"></script>
 		<title>Geeking Simulator</title>
 	</head>
 	<body onload="pageLoad()">
 		<h1>GEEKING SIMULATOR</h1>
+		<div class="scroll-container">
+			<div class="text-row" id="textRow">
+				<span class="text-scroll" id="textScroll" style = "transform: translateX(-100%);"></span>
+			</div> 
+		</div>
 		<div class = "container">
 			<div class = "containerLeft">
 				<div class = "resetContainer">
 					<div><button type="button" onclick="reset()">RESET</button></div>
+					<div><button type="button" onclick="save()">SAVE</button></div>
 				</div>
 			</div>
 			<div class = "containerCenter">
@@ -39,5 +44,11 @@
 				</div>
 			</div>
 		</div>
+		<div class = "containerTed" id = "containerTed">
+			<div id="test1">
+				<button type="button" class="image-button" id="ted" onclick="tedStop()"></button>
+			</div>
+		</div>
 	</body>
+	<script src="script.js"></script>
 </html>

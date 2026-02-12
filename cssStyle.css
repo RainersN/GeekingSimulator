@@ -15,7 +15,7 @@ h1 {
 .containerLeft {
 	display:flex;
 	flex-direction: column;
-	width:10%;
+	width:20%;
 }
 .containerRight {
 	display:flex;
@@ -49,4 +49,53 @@ h1 {
 }
 #amountDisplay {
 	font-size:24px;
+}
+.containerTed{
+	width:90%;
+	height:350px;
+	margin: auto;
+	margin-top:30px;
+}
+.image-button {
+             width: 100px;
+             height: 130px;
+             background-image: url(
+    'images/ted.png');
+             background-size: cover;
+             border: none;
+             cursor: pointer;
+			   transition: .5s top, .5s right;
+}
+#test1{
+	height: 130px;
+	width:100px;
+	position: absolute;
+	visibility:hidden;
+}
+.scroll-container {
+  flex-grow: 1;
+  overflow: hidden;
+  border:3px;
+  border-style: solid;
+  border-color:black;
+  margin-bottom:10px;
+}
+.text-row {
+  white-space: nowrap;
+  padding: 10px 0;
+  align-items: center;
+}
+.text-scroll {
+  display: inline-flex;
+  flex-shrink: 0;
+  animation: scroll 30s linear infinite;
+  padding-left:100%
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
