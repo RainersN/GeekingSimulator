@@ -143,16 +143,16 @@ function pageLoad(){
 	if ( !localStorage.getItem("power")) {
 		localStorage.setItem("power", 1);
 	}
-	let geekAmount = Number(localStorage.getItem("geekAmount"));
-	let upgradeAmount = Number(localStorage.getItem("upgradeAmount"));
-	let upgradeCost = Number(localStorage.getItem("upgradeCost"));
-	let upgradeAutoAmount = Number(localStorage.getItem("upgradeAutoAmount"));
-	let upgradeAutoCost = Number(localStorage.getItem("upgradeAutoCost"));
-	let upgradeAutoV2Amount = Number(localStorage.getItem("upgradeAutoV2Amount"));
-	let upgradeAutoV2Cost = Number(localStorage.getItem("upgradeAutoV2Cost"));
-	let tickspeed = Number(localStorage.getItem("tickspeed"));
-	let tickCost = Number(localStorage.getItem("tickCost"));
-	let power = Number(localStorage.getItem("power"));
+	geekAmount = Number(localStorage.getItem("geekAmount"));
+	upgradeAmount = Number(localStorage.getItem("upgradeAmount"));
+	upgradeCost = Number(localStorage.getItem("upgradeCost"));
+	upgradeAutoAmount = Number(localStorage.getItem("upgradeAutoAmount"));
+	upgradeAutoCost = Number(localStorage.getItem("upgradeAutoCost"));
+	upgradeAutoV2Amount = Number(localStorage.getItem("upgradeAutoV2Amount"));
+	upgradeAutoV2Cost = Number(localStorage.getItem("upgradeAutoV2Cost"));
+	tickspeed = Number(localStorage.getItem("tickspeed"));
+	tickCost = Number(localStorage.getItem("tickCost"));
+	power = Number(localStorage.getItem("power"));
 	let powerCost = 50000;
 	for (let temp = power; temp>1;temp-=0.05){
 		powerCost *= 2.5;
@@ -254,7 +254,12 @@ function newNewsPicker(){
 	  "Epstein Epstein Epstein Epstein Epstein Epstein Epstein Epstein Epstein Epstein Epstein Epstein Epstein Epstein Epstein Epstein Epstein",
 	  "Tumšzilais evaņģēlijs tweaking ngl. Tell me how some green police academy graduate just went in for a top 10 Kai Cenat aura moment and 1v3'ed the head of a racketeering gang. Bro who is you to be dodging bullets walking straight forward",
 	  "BREAKING NEWS - Multiple houses have been found damaged overnight. Those affected say that strange holes have appeared all around both the inside and outside of their buildings. This incident has produced so-called 'Hole Houses',and the damages are calculated to be in the millions. More at 6.",
-	  "Title: The Case Against the Frenzy Auto Shotgun in Fortnite: Overpowered and Unfair In the competitive landscape of Fortnite, the balance of weaponry is crucial to ensuring a fair and enjoyable experience for all players. However, certain weapons, such as the Frenzy Auto Shotgun, have emerged as contentious points due to their overpowered nature, tilting the scales of fairness and creating frustration among players."
+	  "Title: The Case Against the Frenzy Auto Shotgun in Fortnite: Overpowered and Unfair In the competitive landscape of Fortnite, the balance of weaponry is crucial to ensuring a fair and enjoyable experience for all players. However, certain weapons, such as the Frenzy Auto Shotgun, have emerged as contentious points due to their overpowered nature, tilting the scales of fairness and creating frustration among players.",
+	  "Yo,who are these players bro? Who the fuck is Dixon-Bonner? Maycock,Smallwood...-who are these?! Goldaniga! WHO IS GOLDANIGA?! Bro get the-nah hell nah man,I'm never letting you play FIFA with my account. Niga...WHO IS NIGA? WHY IS EVERYBODY NAMED N****? Bendová. Who the fuck? Zúñiga...Oh hell nah. Dickmann...WHO ARE THESE? Gayret...Cummings and Nigg,like what the fuck-dick. *disbelief*",
+	  " Hallo meine Zeitungsleser! Sveici jūs šajā vakarā! Laikraksta topšanas laikā notika negaidīts uzbrukums no Rīgas Līča teritorijas midgetiem takā info varbūt nebūs tik daudz kā parasti. Nesen tikka uzzināti Latviešu valodas PD rezultāti kas varēja pārsteigt labā un nevisai ziņā. Var apgalvot to ka skolotājs pastrādāja!  PURVCIEMA BURVJI!?!? Svētdien ejot pa Zemitānu tiltu redzēju jocīgu skatu. Divi džeki mežiņa kaut ko tup. Drīzumā viens no džekiem sāka puļīt dūmus (Es biju ahujā). Otrs džeks sāka full sprintā maukt prom. Takā pēc šis situācijas es varu apgalvot ka Purvciems ir mistiska vieta un kaut kur jābūt mistiskajam apburtajam kokam. DARINŠ JĀMĪL Darbiņi ir Programmēšanā un Angļu valodā kā arī Matemātīka. (Praktiskais līdz 19.10 un Uzdevumiņi grāmatā un Dariņš kladē.) IZMAIŅAS!?!? Rītā rāda ka būs 2 pāri ar angļu valodu no rīta. Nav zināms cik pattiesa info bet tad jau redzēs. ATGĀDINĀJUMS!!! Sagatavojat pd burtnīcas matemātikā! Tā tauta uz šodienu viss man pašam te citas problēmas uzrodās. Midgeti tika cauri aizsradzības slāņiem tulīt man jau pie durvīm klauvē tāka es eju pizģīt viņus. Novēlu jauku atlikušo vakaru.",
+	  "Hallo meine Zeitungsleser! Labs vakars tauta! Šoreiz izdevums vēlāk nekā parasti (ar ko negadās) īsumā ši nedēļa tāda viegla baiki darīt neko nevjadzēja. Šodien mūs sporta skolotājs piespida mums atbalstīt mūsu big big kačoku novērojot ar dieva doto spēju (redzi) novērot kā dzelz stienis veica vienmērīgi paatrinātu vertikālu kustību uz augšu (fizikas skolotājs sajūsmā) un lika aplaudēt svara celšanas sacensībās. Ja nesekoja līdzi sodijums bija N. (L Žani skill issue)  FIZIKAS SKOLOTĀJA DARBIŅŠ. Darījām fizikas skolotāja praktisko darbiņu sastībā ar elastību. Cerēsim ka viņam celītis būs pietiekoši elastīgs, lai izturētu visu uzlikto slodzi. Aimena (akmeņa) jaunā jaukt-lente!  A(i/k)mens cepa savu mixtape. (jaukt-lente) Sola tīrāko fire (uguni), jo cepa digti un laikam nenodedzināja. (par laimi) Takā nāksies gadīt kad uz palodzes beidzot atdzisīs un varēsim to izbaudīt.  Skolotāja kraikase!!! Nesan tika nopludināts kontroversiāls videomateriāls kurā redzama skolotāja kraikase! Tas ir ļoti traki un parāda skolotāja kungu neprofesionālā gaismā. Bet mums tagat ir visas iespējas blackmailot viņu pieprasot augstākas atzīmes, bet to vel nolemsim. Klases pasākums! Diemžēl pasākums tiek pārcelts uz 20 decembri, bet labā puse ir tāda ka jums ir vairāk laiks sagatavoties 'Skolas eine Zeitung viktorīnai' un man būs vairāk laika sagatavot sarežģītākus jautājumus. Dzejolīši Pie LV skolotāja skaitijām pantiņus priekš atzīmītēm. Tā arī nesagaidijām sniega dziesma 2 tikai sniega dziemsa 1 tika skandināta. (Tā ir kā ir) Baigi nav ko vel stāstīt tākā būs īsais raksts. Novēlu jums jauku atlikušo vakaru! ",
+	  "Hallo meine Zeitungsleser! Šis ir speciāls izdevums dēļ esošajiem apstākļiem! Jūs varbūt nepamanijāt bet skolā pazuda elektrība!1!!11!! Tas ir ļoti traģisks gadijums, jo iekšā esošie cilvēki ir iespundēti dēļ automātisko durvju nesadarbošanos ar mūsu tautiešiem. Ir izveidojušās vairākas teorijas par elektrības pazušanas iemeslu. Viena no teorijām kura tiek bāzēta uz aculiecinieku apstiprinājumiem kura stāsta par 5. kursa elektriķiem kuri piedzērušies aizčāpoja uz elektrības skapi un izvilka trīs rezistorus. Sakot vel ka skolotāja kungs 'dandžen meistars' būdams varens elektriķis aizgāja sadeva 3. kursniekiem pa UTP un STP (Ultimate Taukaino Pakausi, Sasvidušo Tesmeņu Pieri)  Skolotājs savāca rezistorus un aizgāja uz savu dandženu tur pētīt, bet tie nezināmu apstākļu dēļ pazuda. Bet skolotāja kungam izdevās sataisīt elektrību RTK gaismām. (Līdz ar to tumsā nesēžam.) Tomēr daži saka ka rezistorud savāca Šmara, ******,******,*******. Iespējams ka katram bija savs iemesls. iemēram Šmarai varbūt viņas birojā vajadzēja, ****** to grasijās savā kambarī novietot, ****** rezistoru savāca lai nodotu TolmetTM un nopirktu velvienu 0,3 L Trīsgraudu, lai lāpitu 'большая большая поха.' Un ****** ganjau paņēma, lai ātrāk varētu vairoties ar pingvīna izdzimteni vārda Linuxis, bet kur gan palika pēdējais rezistors nav skaidrs, bet klaiņo baumas ka viss var aiziet līdz audzināšanas stundai. ****** komentē: 'Jā tieši tā!' bet to gan mēs vel redzēsim. Tā gan ir populārākā teorija skolas iemītnieku starpā.  Tomēr es vēlētos izvirzīt savu teoriju, ka elektrības pazušana ir tieši saistīta ar RLT (Rīgas līča teritorijas) midžetiem un to meģinājumiem sabotēt mūsu valsti un valsts inteleģenci. Es to secinu pēc to iepriekšējiem uzbrukumuiem, kas bija tieši saistīti ar infrastruktūru un lūk velviens piemērs!  Sakarā ar to es pasludinu veikt lielākas represijas pret RLT un to dalībniekiem. Pēc ****** astroloģiskajām prognozēm midžetu aktivitāte palielināsies ar Maija pienākšanu. Ar šo arī beigsies šis spec-izdevums novēlu jums jauku atlikušo dienu. Honorable mention: Gatavs saņemt muguras šāvienus vol1 > Gatavs saņemt muguras šāvienus vol2",
+	  "Es runāju ar draugiem pie datora,bet es apklusu,jo man palika auksti. Es paskatījos pa labi,un redzēju,ka manai mājai bija liels caurums sienā. Izgāju pa to ārā un redzēju aku. Piegāju tai tuvāk,bet paslīdēju uz kakas (futbola atsauce). Es iekritu akā un atradu mazu,maģisku lādīti. Izmantojot Aimena divu pirkstu paņēmienu es to atvēru,un iekšā atradu mazu lapiņu. Tas bija nosūtījums pēc paracetamola. Diemžēl,elektriskā strāva no pazemes līnijām man iespēra,un es pamodos slimnīcā. Dakteris man paziņoja,ka atrodos Panamā,slimnīcā uz pakalna. Es iedzēru kafiju ar pienu un uzēdu putru,un padomāju par savu zirgu,kas man palikās mājās. Tagad jau tas visticamāk stāvētu saulrietā."
 	];
 	const newsLength = [
 	  17,
@@ -262,7 +267,12 @@ function newNewsPicker(){
 	  17,
 	  42,
 	  47,
-	  64
+	  64,
+	  56,
+	  175,
+	  232,
+	  305,
+	  99
 	];
 	let newsRandomElement = Math.floor(Math.random() * news.length);
 	let wordCount = newsLength[newsRandomElement];
