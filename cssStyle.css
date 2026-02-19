@@ -4,6 +4,11 @@
 }
 .resetContainer {
 	position: absolute; bottom: 0px;
+	display:flex;
+}
+.resetContainer button{
+	font-size:24px;
+	margin-right:16px;
 }
 h1 {
 	text-align:center;
@@ -99,3 +104,12 @@ h1 {
     transform: translateX(-100%);
   }
 }
+#saveText{
+	opacity:0;
+	animation: fadeOut 5s ease-in;
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
