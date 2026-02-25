@@ -58,7 +58,7 @@ function tedStop(){
 	tedAppearTimeout = setTimeout(testTed, Math.floor(Math.random() * (1800000 - 300000) ) + 300000);
 }
 function geekClick() {
-	console.log(Math.pow((1*Math.pow(1.15, amountId0))*amountId3,amountId4));
+	console.log(Math.pow((1*Math.pow(1.15, amountId0))*amountId3,0.95+(amountId4/20)));
 	geekAmount += Math.pow((1*Math.pow(1.15, amountId0))*amountId3,amountId4);
 }
 //here we go...
@@ -69,10 +69,10 @@ function setPrice(id){
 		{price:50,increase:1.2},
 		{price:200,increase:1.5},
 		{price:100,increase:2},
-		{price:5,increase:2.5}
+		{price:50000,increase:2.5}
 	]
 	itemAmount = localStorage.getItem("amountId" + id);
-	if(id != 4 || id != 3){
+	if(id != 4 && id != 3){
 		itemAmount++;
 	}
 	let temp = 0;
@@ -131,7 +131,7 @@ function pageLoad(){
 }
 //adds points per every tick (100ms),values are divided by 10 so symbolize per second increases
 function tick() {
-	geekAmount += Math.pow(((((1*amountId1) + (3*amountId2))/10)*amountId3),amountId4);
+	geekAmount += Math.pow(((((1*amountId1) + (3*amountId2))/10)*amountId3),0.95+(amountId4/20));
     document.getElementById("amountDisplay").innerHTML = (Number(geekAmount).toFixed(2));
 }
 function saveTick() {
