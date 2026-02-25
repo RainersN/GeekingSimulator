@@ -43,6 +43,7 @@ h1 {
 	width: 80%;
 	height: auto;
 	margin-top: 50px;
+	margin-bottom: 50px;
 }
 @keyframes rotation {
   from {
@@ -52,7 +53,7 @@ h1 {
     transform: rotate(359deg);
   }
 }
-#amountDisplay {
+.geekpointsDisplay {
 	font-size:24px;
 }
 .containerTed{
@@ -112,4 +113,6 @@ h1 {
     from { opacity: 1; }
     to { opacity: 0; }
 }
-
+#uiDiv{
+	font-size:24px;
+}

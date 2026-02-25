@@ -5,20 +5,19 @@ let tedAppearTimeout;
 let saveSpanTimeout;
 //take variables from storage and define them as such when loading page
 let geekAmount = Number(localStorage.getItem("geekAmount"));
-let upgradeAmount = Number(localStorage.getItem("upgradeAmount"));
-let upgradeCost = Number(localStorage.getItem("upgradeCost"));
-let upgradeAutoAmount = Number(localStorage.getItem("upgradeAutoAmount"));
-let upgradeAutoCost = Number(localStorage.getItem("upgradeAutoCost"));
-let upgradeAutoV2Amount = Number(localStorage.getItem("upgradeAutoV2Amount"));
-let upgradeAutoV2Cost = Number(localStorage.getItem("upgradeAutoV2Cost"));
-let tickspeed = Number(localStorage.getItem("tickspeed"));
-let tickCost = Number(localStorage.getItem("tickCost"));
-let power = Number(localStorage.getItem("power"));
-let temp = 0;
-for (let i = power; i>1;i-=0.05){
-	temp++;
-}
-powerCost = 50000 * Math.pow(2.5,temp);
+let amountId0 = Number(localStorage.getItem("amountId0"));
+let amountId1 = Number(localStorage.getItem("amountId1"));
+let amountId2 = Number(localStorage.getItem("amountId2"));
+let amountId3 = Number(localStorage.getItem("amountId3"));
+let amountId4 = Number(localStorage.getItem("amountId4"));
+const savedValues = [
+	{name:"geekAmount",value:0},
+	{name:"amountId0",value:0},
+	{name:"amountId1",value:0},
+	{name:"amountId2",value:0},
+	{name:"amountId3",value:1},
+	{name:"amountId4",value:1}
+]
 tedAppearTimeout = setTimeout(testTed, Math.floor(Math.random() * (1800000 - 300000) ) + 300000);
 //moves teds face by calculating page/container size and image position,then gives random new position
 function imageMove(){
@@ -59,215 +58,134 @@ function tedStop(){
 	tedAppearTimeout = setTimeout(testTed, Math.floor(Math.random() * (1800000 - 300000) ) + 300000);
 }
 function geekClick() {
-	geekAmount += Math.pow((1*Math.pow(1.15, upgradeAmount)),power);
+	console.log(Math.pow((1*Math.pow(1.15, amountId0))*amountId3,amountId4));
+	geekAmount += Math.pow((1*Math.pow(1.15, amountId0))*amountId3,amountId4);
 }
-//upgrades click efficiency
-function upgradeGeekClick() {
-	if(geekAmount>=upgradeCost) {
-		upgradeAmount++;
-		geekAmount -= upgradeCost;
-		upgradeCost *=1.25
-	}
-	let upgradeDisplay = document.getElementById("upgradeDisplay");
-    upgradeDisplay.innerHTML = (upgradeAmount);
-	let costDisplay = document.getElementById("costDisplay");
-    costDisplay.innerHTML = (" Upgrade cost: " + Number(upgradeCost).toFixed(2));
-}
-//adds an auto generator at base speed of 1 point per second before upgrades
-function upgradeAutoGeekClick() {
-	if(geekAmount>=upgradeAutoCost) {
-		upgradeAutoAmount++;
-		geekAmount -= upgradeAutoCost;
-		upgradeAutoCost *=1.20
-	}
-	let upgradeAutoGeekDisplay = document.getElementById("upgradeAutoGeekDisplay");
-    upgradeAutoGeekDisplay.innerHTML = (upgradeAutoAmount);
-	let costAutoGeekDisplay = document.getElementById("costAutoGeekDisplay");
-    costAutoGeekDisplay.innerHTML = (" Upgrade cost: " + Number(upgradeAutoCost).toFixed(2));
-}
-//adds an auto generator at base speed of 3 points per second before upgrades
-function upgradeAutoGeekClickV2() {
-	if(geekAmount>=upgradeAutoV2Cost) {
-		upgradeAutoV2Amount++;
-		geekAmount -= upgradeAutoV2Cost;
-		upgradeAutoV2Cost *=1.5
-	}
-	let upgradeAutoGeekDisplayV2 = document.getElementById("upgradeAutoGeekDisplayV2");
-    upgradeAutoGeekDisplayV2.innerHTML = (upgradeAutoV2Amount);
-	let costAutoGeekDisplayV2 = document.getElementById("costAutoGeekDisplayV2");
-    costAutoGeekDisplayV2.innerHTML = (" Upgrade cost: " + Number(upgradeAutoV2Cost).toFixed(2));
-}
-//adds a multiplier to all stats besides click,will be removed for global multiplier in future
-//dont forget to remove it vro
-function upgradeTickspeed() {
-	if(geekAmount>=tickCost) {
-		tickspeed *= 1.1;
-		geekAmount -= tickCost;
-		tickCost *=2
-	}
-	let tickspeedDisplay = document.getElementById("tickspeedDisplay");
-    tickspeedDisplay.innerHTML = (" Tickspeed: " + Number(tickspeed).toFixed(2));
-	let costTickDisplay = document.getElementById("costTickDisplay");
-    costTickDisplay.innerHTML = (" Upgrade cost: " + Number(tickCost).toFixed(2));
-}
-//raises all point gain sources to certain power,first try at not hardcoding costs
-
-//this is cursed,there's gotta be a better way to do this
-//anything but having 2 if statements... (maybe I can make a function that gets called in a loop per ID and automatically sets price?)
-function upgradePower() {
-	if(geekAmount>=powerCost) {
-		power += 0.05;
-		geekAmount -= powerCost;
+//here we go...
+function setPrice(id){
+	//localStorage.setItem("amountId2",1);
+	const priceInfo = [
+		{price:25,increase:1.25},
+		{price:50,increase:1.2},
+		{price:200,increase:1.5},
+		{price:100,increase:2},
+		{price:5,increase:2.5}
+	]
+	itemAmount = localStorage.getItem("amountId" + id);
+	if(id != 4 || id != 3){
+		itemAmount++;
 	}
 	let temp = 0;
-	for (let i = power; i>1;i-=0.05){
-		temp++;
-		console.log(temp);
+	for (let i = itemAmount; i>1;i-=1){
+		temp+=1;
 	}
-	powerCost = 50000 * Math.pow(2.5,temp);
-	console.log(powerCost);
-	let powerDisplay = document.getElementById("powerDisplay");
-    powerDisplay.innerHTML = (" GeekPoints Power^: " + Number(power).toFixed(2));
-	let costPowerDisplay = document.getElementById("costPowerDisplay");
-    costPowerDisplay.innerHTML = (" Upgrade cost: " + Number(powerCost).toFixed(2));
+	console.log(temp);
+	let finalPrice = priceInfo[id].price * Math.pow(priceInfo[id].increase,temp);
+	if(id == 4){
+		let costDisplay = document.getElementById("costDisplay" + id);
+		costDisplay.innerHTML = (Number(finalPrice).toFixed(2));
+		let amountDisplay = document.getElementById("amountDisplay" + id);
+		amountDisplay.innerHTML = (Number(0.95+itemAmount/20).toFixed(2));
+	}
+	else{
+		let costDisplay = document.getElementById("costDisplay" + id);
+		costDisplay.innerHTML = (Number(finalPrice).toFixed(2));
+		let amountDisplay = document.getElementById("amountDisplay" + id);
+		amountDisplay.innerHTML = (Number(localStorage.getItem("amountId" + id)));
+	}
+	return finalPrice;
+}
+function buyItem(id){
+	price = setPrice(id);
+	itemAmount = localStorage.getItem("amountId" + id);
+	if(geekAmount>=price) {
+		itemAmount++;
+		geekAmount -= price;
+	}
+	if(id == 4){
+		let amountDisplay = document.getElementById("amountDisplay" + id);
+		amountDisplay.innerHTML = (Number(itemAmount/20).toFixed(2));
+		amountId4 =  0.95+(itemAmount/20);
+	}
+	else{
+		let amountDisplay = document.getElementById("amountDisplay" + id);
+		amountDisplay.innerHTML = (Number(itemAmount).toFixed(2));
+		eval("amountId" + id + '= ' + itemAmount + ';');
+	}
+	localStorage.setItem("amountId" + id,itemAmount);
+	setPrice(id);
 }
 //sets values if theyre empty when page loads,sets base elements
 //placement of text will be standardized with one function and IDs if possible
 function pageLoad(){
-	if ( !localStorage.getItem("geekAmount")) {
-		localStorage.setItem("geekAmount", 0);
+	for(i = 0;i<savedValues.length;i++){
+		console.log(i);
+		if ( !localStorage.getItem(savedValues[i].name)) {
+		localStorage.setItem(savedValues[i].name, savedValues[i].value);
+		}
 	}
-	if ( !localStorage.getItem("upgradeAmount")) {
-		localStorage.setItem("upgradeAmount", 0);
+	for(i=0;i<5;i++){
+		setPrice(i);
 	}
-	if ( !localStorage.getItem("upgradeCost")) {
-		localStorage.setItem("upgradeCost", 25);
-	}
-	if ( !localStorage.getItem("upgradeAutoAmount")) {
-		localStorage.setItem("upgradeAutoAmount", 0);
-	}
-	if ( !localStorage.getItem("upgradeAutoCost")) {
-		localStorage.setItem("upgradeAutoCost", 50);
-	}
-	if ( !localStorage.getItem("upgradeAutoV2Amount")) {
-		localStorage.setItem("upgradeAutoV2Amount", 0);
-	}
-	if ( !localStorage.getItem("upgradeAutoV2Cost")) {
-		localStorage.setItem("upgradeAutoV2Cost", 200);
-	}
-	if ( !localStorage.getItem("tickspeed")) {
-		localStorage.setItem("tickspeed", 1);
-	}
-	if ( !localStorage.getItem("tickCost")) {
-		localStorage.setItem("tickCost", 100);
-	}
-	if ( !localStorage.getItem("power")) {
-		localStorage.setItem("power", 1);
-	}
-	geekAmount = Number(localStorage.getItem("geekAmount"));
-	upgradeAmount = Number(localStorage.getItem("upgradeAmount"));
-	upgradeCost = Number(localStorage.getItem("upgradeCost"));
-	upgradeAutoAmount = Number(localStorage.getItem("upgradeAutoAmount"));
-	upgradeAutoCost = Number(localStorage.getItem("upgradeAutoCost"));
-	upgradeAutoV2Amount = Number(localStorage.getItem("upgradeAutoV2Amount"));
-	upgradeAutoV2Cost = Number(localStorage.getItem("upgradeAutoV2Cost"));
-	tickspeed = Number(localStorage.getItem("tickspeed"));
-	tickCost = Number(localStorage.getItem("tickCost"));
-	power = Number(localStorage.getItem("power"));
-	let powerCost = 50000;
-	for (let temp = power; temp>1;temp-=0.05){
-		powerCost *= 2.5;
-	}
-	let upgradeDisplay = document.getElementById("upgradeDisplay");
-    upgradeDisplay.innerHTML = (upgradeAmount);
-	let costDisplay = document.getElementById("costDisplay");
-    costDisplay.innerHTML = (" Upgrade cost: " + Number(upgradeCost).toFixed(2));
-	let upgradeAutoGeekDisplay = document.getElementById("upgradeAutoGeekDisplay");
-    upgradeAutoGeekDisplay.innerHTML = (upgradeAutoAmount);
-	let costAutoGeekDisplay = document.getElementById("costAutoGeekDisplay");
-    costAutoGeekDisplay.innerHTML = (" Upgrade cost: " + Number(upgradeAutoCost).toFixed(2));
-	let upgradeAutoGeekDisplayV2 = document.getElementById("upgradeAutoGeekDisplayV2");
-    upgradeAutoGeekDisplayV2.innerHTML = (upgradeAutoV2Amount);
-	let costAutoGeekDisplayV2 = document.getElementById("costAutoGeekDisplayV2");
-    costAutoGeekDisplayV2.innerHTML = (" Upgrade cost: " + Number(upgradeAutoV2Cost).toFixed(2));
-	let tickspeedDisplay = document.getElementById("tickspeedDisplay");
-    tickspeedDisplay.innerHTML = (" Tickspeed: " + Number(tickspeed).toFixed(2));
-	let costTickDisplay = document.getElementById("costTickDisplay");
-    costTickDisplay.innerHTML = (" Upgrade cost: " + Number(tickCost).toFixed(2));
-	let powerDisplay = document.getElementById("powerDisplay");
-    powerDisplay.innerHTML = (" GeekPoints Power^: " + Number(power).toFixed(2));
-	let costPowerDisplay = document.getElementById("costPowerDisplay");
-    costPowerDisplay.innerHTML = (" Upgrade cost: " + Number(powerCost).toFixed(2));
+	clockFunction();
 }
 //adds points per every tick (100ms),values are divided by 10 so symbolize per second increases
 function tick() {
-	geekAmount += Math.pow(((((1*upgradeAutoAmount) + (3*upgradeAutoV2Amount))/10)*tickspeed),power);
-    document.getElementById("amountDisplay").innerHTML = ("GeekPoints™: " + Number(geekAmount).toFixed(2));
+	geekAmount += Math.pow(((((1*amountId1) + (3*amountId2))/10)*amountId3),amountId4);
+    document.getElementById("amountDisplay").innerHTML = (Number(geekAmount).toFixed(2));
 }
+function saveTick() {
+	localStorage.setItem("geekAmount", geekAmount);
+}
+
+// taken from w3schools
+function clockFunction() {
+  var countDownDate = new Date("Apr 1, 2026 22:00:00").getTime();
+  var now = new Date().getTime();
+
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("uiClock").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("uiClock").innerHTML = "It's never coming";
+  }
+}
+setInterval(clockFunction,1000);
 //resets values...array update coming soon + 2 weeks
 function reset() {
-	localStorage.setItem("geekAmount", 0);
-	localStorage.setItem("upgradeAmount", 0);
-	localStorage.setItem("upgradeCost", 25);
-	localStorage.setItem("upgradeAutoAmount", 0);
-	localStorage.setItem("upgradeAutoCost", 50);
-	localStorage.setItem("upgradeAutoV2Amount", 0);
-	localStorage.setItem("upgradeAutoV2Cost", 200);
-	localStorage.setItem("tickspeed", 1);
-	localStorage.setItem("tickCost", 100);
-	localStorage.setItem("power", 1);
-	geekAmount = Number(localStorage.getItem("geekAmount"));
-	upgradeAmount = Number(localStorage.getItem("upgradeAmount"));
-	upgradeCost = Number(localStorage.getItem("upgradeCost"));
-	upgradeAutoAmount = Number(localStorage.getItem("upgradeAutoAmount"));
-	upgradeAutoCost = Number(localStorage.getItem("upgradeAutoCost"));
-	upgradeAutoV2Amount = Number(localStorage.getItem("upgradeAutoV2Amount"));
-	upgradeAutoV2Cost = Number(localStorage.getItem("upgradeAutoV2Cost"));
-	tickspeed = Number(localStorage.getItem("tickspeed"));
-	tickCost = Number(localStorage.getItem("tickCost"));
-	power = Number(localStorage.getItem("power"));
-	let upgradeDisplay = document.getElementById("upgradeDisplay");
-    upgradeDisplay.innerHTML = (upgradeAmount);
-	let costDisplay = document.getElementById("costDisplay");
-    costDisplay.innerHTML = (" Upgrade cost: " + Number(upgradeCost).toFixed(2));
-	let upgradeAutoGeekDisplay = document.getElementById("upgradeAutoGeekDisplay");
-    upgradeAutoGeekDisplay.innerHTML = (upgradeAutoAmount);
-	let costAutoGeekDisplay = document.getElementById("costAutoGeekDisplay");
-    costAutoGeekDisplay.innerHTML = (" Upgrade cost: " + Number(upgradeAutoCost).toFixed(2));
-	let upgradeAutoGeekDisplayV2 = document.getElementById("upgradeAutoGeekDisplayV2");
-    upgradeAutoGeekDisplayV2.innerHTML = (upgradeAutoV2Amount);
-	let costAutoGeekDisplayV2 = document.getElementById("costAutoGeekDisplayV2");
-    costAutoGeekDisplayV2.innerHTML = (" Upgrade cost: " + Number(upgradeAutoV2Cost).toFixed(2));
-	let tickspeedDisplay = document.getElementById("tickspeedDisplay");
-    tickspeedDisplay.innerHTML = (" Tickspeed: " + Number(tickspeed).toFixed(2));
-	let costTickDisplay = document.getElementById("costTickDisplay");
-    costTickDisplay.innerHTML = (" Upgrade cost: " + Number(tickCost).toFixed(2));
-	let powerDisplay = document.getElementById("powerDisplay");
-    powerDisplay.innerHTML = (" GeekPoints Power^: " + Number(power).toFixed(2));
-	let powerCost = 50000;
-	for (let temp = power; temp>1;temp-=0.05){
-		powerCost *= 2.5;
+	for(i = 0;i<savedValues.length-1;i++){
+		localStorage.setItem(savedValues[i].name, savedValues[i].value);
+		eval("amountId" + i + '= ' + savedValues[i+1].value + ';');
 	}
-	let costPowerDisplay = document.getElementById("costPowerDisplay");
-    costPowerDisplay.innerHTML = (" Upgrade cost: " + Number(powerCost).toFixed(2));
-	let amountDisplay = document.getElementById("amountDisplay");
-    amountDisplay.innerHTML = ("GeekPoints™: " + Number(geekAmount).toFixed(2));
+	for(i = 0;i<savedValues.length;i++){
+		localStorage.setItem(savedValues[i].name, savedValues[i].value);
+	}
+	geekAmount = 0;
+    document.getElementById("amountDisplay").innerHTML = (Number(geekAmount).toFixed(2));
+	for(i=0;i<5;i++){
+		setPrice(i);
+	}
 }
 //saves the game
 //also adds a span element to signify that game has indeed been saved,so users know page is responding
+/*
+//"I WILL RETURN!",says the save function,knowing damn well I won't be adding the ultimate save string any time soon
 function save(){
 	clearTimeout(saveSpanTimeout);
 	saveSpanTimeout = setTimeout(deleteSpanText,5000);
 	localStorage.setItem("geekAmount", geekAmount);
-	localStorage.setItem("upgradeAmount", upgradeAmount);
-	localStorage.setItem("upgradeCost", upgradeCost);
-	localStorage.setItem("upgradeAutoAmount", upgradeAutoAmount);
-	localStorage.setItem("upgradeAutoCost", upgradeAutoCost);
-	localStorage.setItem("upgradeAutoV2Amount", upgradeAutoV2Amount);
-	localStorage.setItem("upgradeAutoV2Cost", upgradeAutoV2Cost);
-	localStorage.setItem("tickspeed", tickspeed);
-	localStorage.setItem("tickCost", tickCost);
-	localStorage.setItem("power", power);
+	for (i=0;i<5;i++){
+		console.log(eval("amountId"+i));
+		localStorage.setItem(savedValues[i].name,eval("amountId"+i));
+	}
 	if (document.getElementById("saveText") !== null) {
 		document.getElementById("saveText").remove();
     }
@@ -276,12 +194,14 @@ function save(){
 	document.getElementById("resetContainer").appendChild(createTextSpan);
 	document.getElementById("saveText").innerHTML = "SAVED!";
 }
+
 //deletes span text if exists,is triggered by timeout,which is also autocleared every save to make smooth span fadeout
 function deleteSpanText(){
 	if (document.getElementById("saveText") !== null) {
 		document.getElementById("saveText").remove();
 	}
 }
+*/
 //picks random news ticker content from array,matches with length from second array to make animation length. works by deleting and adding new spans for smooth transition experience and so it doesnt change mid-transition (took a while to fix,even though its a simple concept,I guess it took a moment to realize)
 function newNewsPicker(){
 	document.getElementById("textScroll").remove();
@@ -310,7 +230,11 @@ function newNewsPicker(){
 	  "BREAKING NEWS - Man stabbed on tram. Today at 10:42pm a man was taking tram route 1B,when someone reportedly approached him and stabbed him. Thankfully other passengers were able to help fight off the attacker and called an ambulance for the wounded passenger. The attacker has been arrested for police and is awaiting trial. The injured man has survived the attack,however has currently declined to comment. However,this marks the 12th attack this hour,an all-time low for today.",
 	  "BREAKING NEWS - Students of Geek University have started a week of demolition. Those participating have stated that they are just having fun,however employees tell a different story. All across the university and especially in the restroom one might find just rubble - kicked down doors and holes in walls,broken faucets and wet floors. There have also been reports of a 'snus mountain' being constructed in a secret location thearized by anonymous tips to be the elevator,which is currently broken due to someone having destroyed the electrical system of the university.",
 	  "BREAKING NEWS - All-out war declared between Geek University dorms and local homeless shelter! Sticks and stones may break ones bones,but airsoft pistols poke out eyes this week as students at Geek University dorms have begun a war against the homeless shelter right across the street. There has historically already been a conflict between these 2 establishments,however one of the homeless folks got into a verbal argument with a student when asking for spare change,which the student took as a reason to brag about being poor himself. After the homeless man tried explaining how the student isn't actually that bad off,more students from the dorm came over to help their comrade out. Eventually a large crowd managed to gather,after which they started throwing around rocks and bottles from the ground. The small riot led to 5 injured,however that wasn't the end to it. As the days have gone by,students have begun shooting homeless people walking along the street with airsoft pistols from their windows,while the homeless people have retalliated by trashing the dorms and breaking windows. Multiple fist-fights have also been reported,and the police is considering a curfew and temporary on-site officers to help calm the situation. Both sides have unfortunately refused to comment.",
-	  "BREAKING NEWS - Local kebab shop reportedly using non-standard and even human meat in their products! SIA GeekKebab has been caught catching pigeons by students of Geek University,who state that they saw workers in the all too well-known outfit of GeekKebab using a bow to shoot the poor birds out of the sky. The avians were apparently stacked in a box and brought back to the fast food location through the back-door. However,more shocking is the confession of a former student who used to live on campus of Geek University,who has stated that GeekKebab used to offer a special discount for customers who brought in large batches of meat. The anonymous ex-student said as follows - 'I mean,it was horrible! I remember one time when a student went missing. Everyone walked past their dorm room and it smelled like shit,I mean like something was rotting in there. But then one day it just got...better. Quite the opposite happened at the kebab place however. The meat they put in the kebabs tasted so horrible for around a month. One of my friends who I dont talk to anymore was rrally hyped about going and he paid next to nothing when he visited it for some reason. I stopped going after that,it gave me a bad vibe.'"
+	  "BREAKING NEWS - Local kebab shop reportedly using non-standard and even human meat in their products! SIA GeekKebab has been caught catching pigeons by students of Geek University,who state that they saw workers in the all too well-known outfit of GeekKebab using a bow to shoot the poor birds out of the sky. The avians were apparently stacked in a box and brought back to the fast food location through the back-door. However,more shocking is the confession of a former student who used to live on campus of Geek University,who has stated that GeekKebab used to offer a special discount for customers who brought in large batches of meat. The anonymous ex-student said as follows - 'I mean,it was horrible! I remember one time when a student went missing. Everyone walked past their dorm room and it smelled like shit,I mean like something was rotting in there. But then one day it just got...better. Quite the opposite happened at the kebab place however. The meat they put in the kebabs tasted so horrible for around a month. One of my friends who I dont talk to anymore was rrally hyped about going and he paid next to nothing when he visited it for some reason. I stopped going after that,it gave me a bad vibe.'",
+	  "'And also if you could stop writing 'death to pedophiles' on all the whiteboards,that would be great. Promoting violence is so vulgar.' 'But don't all pedophiles deserve to die?' 'Nonsense! Nobody deserves to die.' 'How peaceful of you...'",
+	  "I can write whatever I want here so I'll recommend a game to actually play (we both know this is a shit project that I'm doing to maybe have a home-grown clicker game for playing at school,so the quality is so-so). Have you heard of...drumroll please...Class of '09? It's so peak. Please play it if you haven't. The humor is quite vulgar but it's peak. Very very peak. Nicole is the best,death to the desciple of Epstein,Mr.Counselor.",
+	  "'Uhhhh...nonāc Neretas krustcelēs,neskaties atpakaļ. Also hellhive iznāks pēc 3 sekundēm. If I see one more limboegg reference I'm cancelling all hellhive development,creating a situation where limboegg can't exist.' - Aimens 'Netanyahu' Vēveris",
+	  "The UI update is coming very soon,infact it's actually bundled together with another product that's gonna come out soon,sort of a 2 in 1 deal. The UI update is coming packaged with Hellhive and LimboEgg 3. This has been confirmed by Aimens Vēveris,who mentioned that his favorite part of development was writing Limboegg 3's story."
 	];
 	const newsLength = [
 	  17,
@@ -333,7 +257,11 @@ function newNewsPicker(){
 	  79,
 	  92,
 	  212,
-	  200
+	  200,
+	  39,
+	  83,
+	  32,
+	  55
 	];
 	let newsRandomElement = Math.floor(Math.random() * news.length);
 	let wordCount = newsLength[newsRandomElement];
@@ -344,7 +272,8 @@ function newNewsPicker(){
 	setTimeout(newNewsPicker,Number(wordCount) * 1000);
 }
 newNewsPicker();
-setInterval(save,60000);
+//setInterval(save,60000);
+setInterval(saveTick,1000);
 //idea i had while writing comments
 //writing it down here so i dont forget,fingers crossed this is deleted soon enough due to successful implementation
 //in short,each upgrade (very useful in the future) has its own ID attached to it in the HTML side,which is then fed into a price array for fetching base prices

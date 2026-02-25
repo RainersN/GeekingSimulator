@@ -17,30 +17,32 @@
 			<div class = "containerLeft">
 				<div class = "resetContainer" id = "resetContainer">
 					<div><button type="button" onclick="reset()">RESET</button></div>
-					<div><button type="button" onclick="save()">SAVE</button></div>
+					<!-- <div><button type="button" onclick="save()">SAVE</button></div> -->
+					<!-- It will return...eventually -->
 				</div>
 			</div>
 			<div class = "containerCenter">
-				<div id = "amountDisplay"></div>
+				<div class = "geekpointsDisplay"><span>GeekPoints™: </span><span id = "amountDisplay"></span></div>
 				<div><button type="button" class = "geekButton" onclick="geekClick()">Geek</button></div>
 				<img src="https://cdn3.emoji.gg/emojis/3430_epstein.png" alt="Epstein" class = "Epstein">
+				<div id = "uiDiv"><span>Time until UI update drops: </span><span id="uiClock"></span></div>
 			</div>
 			
 			<div class = "containerRight">
 				<div class = "containerUpgrade">
-					<div><button type="button" onclick="upgradeGeekClick()">Upgrade Click Efficiency <span id = "upgradeDisplay"></span><br><span id = "costDisplay"></span></button></div>
+					<div><button type="button" onclick="buyItem(0)"><span>Click Efficiency level: </span><span id = "amountDisplay0"></span><br><span>Upgrade cost: </span><span id = "costDisplay0"></span></button></div>
 				</div>
 				<div class = "containerUpgrade">
-					<div><button type="button" onclick="upgradeAutoGeekClick()">Buy Auto-Geeker™ <span id = "upgradeAutoGeekDisplay"></span><br><span id = "costAutoGeekDisplay"></span></button></div>
+					<div><button type="button" onclick="buyItem(1)"><span>Auto-Geeker v1™: </span><span id = "amountDisplay1"></span><br><span>Upgrade cost: </span><span id = "costDisplay1"></span></button></div>
 				</div>
 				<div class = "containerUpgrade">
-					<div><button type="button" onclick="upgradeAutoGeekClickV2()">Buy Auto-Geeker v2™ <span id = "upgradeAutoGeekDisplayV2"></span><br><span id = "costAutoGeekDisplayV2"></span></button></div>
+					<div><button type="button" onclick="buyItem(2)"><span>Auto-Geeker v2™: </span><span id = "amountDisplay2"></span><br><span>Upgrade cost: </span><span id = "costDisplay2"></span></button></div>
 				</div>
 				<div class = "containerUpgrade">
-					<div><button type="button" onclick="upgradeTickspeed()"><span id = "tickspeedDisplay"></span><br><span id = "costTickDisplay"></span></button></div>
+					<div><button type="button" onclick="buyItem(3)"><span>GeekPoints™ Multiplier: </span><span id = "amountDisplay3"></span><br><span>Upgrade cost: </span><span id = "costDisplay3"></span></button></div>
 				</div>
 				<div class = "containerUpgrade">
-					<div><button type="button" onclick="upgradePower()"><span id = "powerDisplay"></span><br><span id = "costPowerDisplay"></span></button></div>
+					<div><button type="button" onclick="buyItem(4)"><span>GeekPoints™ Power^: </span><span id = "amountDisplay4"></span><br><span>Upgrade cost: </span><span id = "costDisplay4"></span></button></div>
 				</div>
 			</div>
 		</div>
