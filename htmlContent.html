@@ -13,42 +13,50 @@
 				<span class="text-scroll" id="textScroll" style = "transform: translateX(-100%);"></span>
 			</div> 
 		</div>
+		<div><div class = "geekpointsDisplay"><span>GeekPoints™: </span><span id = "amountDisplay"></span></div></div>
+		<div><div class = "geekpointsDisplay"><button type="button" class = "geekButton" onclick="geekClick()">Geek</button></div></div>
 		<div class = "container">
 			<div class = "containerLeft">
-				<div class = "resetContainer" id = "resetContainer">
-					<div><button type="button" onclick="reset()">RESET</button></div>
-					<!-- <div><button type="button" onclick="save()">SAVE</button></div> -->
-					<!-- It will return...eventually -->
-				</div>
-			</div>
-			<div class = "containerCenter">
-				<div class = "geekpointsDisplay"><span>GeekPoints™: </span><span id = "amountDisplay"></span></div>
-				<div><button type="button" class = "geekButton" onclick="geekClick()">Geek</button></div>
+				<div class = "leftButtonContainer"><button type="button" class = "geekButton" onclick="changeMenuItem('options')"">Options</button><button type="button" class = "geekButton" onclick="changeMenuItem('info')">Info</button><button type="button" class = "geekButton" onclick="changeMenuItem('credits')">Credits</button></div>
 				<img src="https://cdn3.emoji.gg/emojis/3430_epstein.png" alt="Epstein" class = "Epstein">
 				<div id = "uiDiv"><span>Time until UI update drops: </span><span id="uiClock"></span></div>
+				<img src="https://cdn3.emoji.gg/emojis/3430_epstein.png" alt="Epstein" class = "Epstein">
+				<!--<div class = "resetContainer" id = "resetContainer">
+					<div><button type="button" onclick="reset()">RESET</button></div>
+					<!-- <div><button type="button" onclick="save()">SAVE</button></div> -->
+					<!-- It will return...eventually
+				</div> -->
+			</div>
+			<div class = "containerCenter">
+				<div id="optionsMenu" class="changeableMenu">
+					Super Duper Options over here,get your options here<br>Pretend you can change volume or something here<br>ONE FEATURE INCOMING BELOW!!!!<br><button type="button" onclick="reset()">RESET</button>
+				</div>
+				<div id="infoMenu" class="changeableMenu">
+					Made by the best dev in the world who can write everything from memory.<br>Ok so currently not impressive but just IMAGINE what it will look like in like a year<br>GeekingSim Glow-Up incoming soon<br>Also don't be happy with your progress,I will be deleting it every once in a while,it's just how this works,trust me.<br>Throwing mobile users under the bus unfortunately.<br>As my first order of business,I hereby declare DATA DELETION<br>Corrupted data,bring it forth!
+				</div>
+				<div id="creditsMenu" class="changeableMenu">
+					Credits to W3schools and G4G and StackOverflow and...uhhhh<br>Music credits will be here for sure
+				</div>
 			</div>
 			
 			<div class = "containerRight">
-				<div class = "containerUpgrade">
-					<div><button type="button" onclick="buyItem(0)"><span>Click Efficiency level: </span><span id = "amountDisplay0"></span><br><span>Upgrade cost: </span><span id = "costDisplay0"></span></button></div>
+				<div class = "containerUpgradesScroll">
+					<div class = "containerUpgrade">
+						<div><button type="button" class = "upgradeButton" onclick="buyItem(0)"><span>Click Efficiency level: </span><span id = "amountDisplay0"></span><br><span>Upgrade cost: </span><span id = "costDisplay0"></span></button></div>
+					</div>
+					<div class = "containerUpgrade">
+						<div><button type="button" class = "upgradeButton" onclick="buyItem(1)"><span>Auto-Geeker v1™: </span><span id = "amountDisplay1"></span><br><span>Upgrade cost: </span><span id = "costDisplay1"></span></button></div>
+					</div>
+					<div class = "containerUpgrade">
+						<div><button type="button" class = "upgradeButton" onclick="buyItem(2)"><span>Auto-Geeker v2™: </span><span id = "amountDisplay2"></span><br><span>Upgrade cost: </span><span id = "costDisplay2"></span></button></div>
+					</div>
+					<div class = "containerUpgrade">
+						<div><button type="button" class = "upgradeButton" onclick="buyItem(3)"><span>GeekPoints™ Multiplier: </span><span id = "amountDisplay3"></span><br><span>Upgrade cost: </span><span id = "costDisplay3"></span></button></div>
+					</div>
+					<div class = "containerUpgrade">
+						<div><button type="button" class = "upgradeButton" onclick="buyItem(4)"><span>GeekPoints™ Power^: </span><span id = "amountDisplay4"></span><br><span>Upgrade cost: </span><span id = "costDisplay4"></span></button></div>
+					</div>
 				</div>
-				<div class = "containerUpgrade">
-					<div><button type="button" onclick="buyItem(1)"><span>Auto-Geeker v1™: </span><span id = "amountDisplay1"></span><br><span>Upgrade cost: </span><span id = "costDisplay1"></span></button></div>
-				</div>
-				<div class = "containerUpgrade">
-					<div><button type="button" onclick="buyItem(2)"><span>Auto-Geeker v2™: </span><span id = "amountDisplay2"></span><br><span>Upgrade cost: </span><span id = "costDisplay2"></span></button></div>
-				</div>
-				<div class = "containerUpgrade">
-					<div><button type="button" onclick="buyItem(3)"><span>GeekPoints™ Multiplier: </span><span id = "amountDisplay3"></span><br><span>Upgrade cost: </span><span id = "costDisplay3"></span></button></div>
-				</div>
-				<div class = "containerUpgrade">
-					<div><button type="button" onclick="buyItem(4)"><span>GeekPoints™ Power^: </span><span id = "amountDisplay4"></span><br><span>Upgrade cost: </span><span id = "costDisplay4"></span></button></div>
-				</div>
-			</div>
-		</div>
-		<div class = "containerTed" id = "containerTed">
-			<div id="test1">
-				<button type="button" class="image-button" id="ted" onclick="tedStop()"></button>
 			</div>
 		</div>
 	</body>

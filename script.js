@@ -1,15 +1,18 @@
-setInterval(imageMove, 750);
 setInterval(tick, 100);
-let tedTimeout;
-let tedAppearTimeout;
 let saveSpanTimeout;
-//take variables from storage and define them as such when loading page
+//take variables from storage and define them as variables in the script when loading page
 let geekAmount = Number(localStorage.getItem("geekAmount"));
 let amountId0 = Number(localStorage.getItem("amountId0"));
 let amountId1 = Number(localStorage.getItem("amountId1"));
 let amountId2 = Number(localStorage.getItem("amountId2"));
 let amountId3 = Number(localStorage.getItem("amountId3"));
 let amountId4 = Number(localStorage.getItem("amountId4"));
+const menus = document.querySelectorAll(".changeableMenu");
+	for(i = 0;i<menus.length;i++){
+		if(menus[i] !== document.getElementById(name+"Menu")){
+			menus[i].style.visibility = "hidden";
+		}
+	}
 const savedValues = [
 	{name:"geekAmount",value:0},
 	{name:"amountId0",value:0},
@@ -19,43 +22,10 @@ const savedValues = [
 	{name:"amountId4",value:1}
 ]
 tedAppearTimeout = setTimeout(testTed, Math.floor(Math.random() * (1800000 - 300000) ) + 300000);
-//moves teds face by calculating page/container size and image position,then gives random new position
-function imageMove(){
-	var element1 = document.getElementById("test1");
-	var containerTed = document.getElementById("containerTed");
-    var positionInfo = element1.getBoundingClientRect();
-    var imgHeight = positionInfo.height;
-    var imgWidth = positionInfo.width;
-
-
-    var screenWidth = containerTed.offsetWidth;
-    var screenHeight = containerTed.offsetHeight;
-    var imgLeft = Math.floor(Math.random() * (screenWidth - imgWidth));
-    var imgTop= Math.floor(Math.random() * (screenHeight - imgHeight)) + (window.innerHeight - screenHeight);
-	//console.log(screenHeight);
-	//console.log(imgLeft);
-	//console.log(imgTop);
-    document.getElementById("test1").style.top = imgTop+"px";
-    document.getElementById("test1").style.left = imgLeft+"px";
-}
-//makes ted visible and gives user 5 second to click him
+//legacy function that I will keep in until I can fix the bug it makes. for some reason removing it breaks the news ticker.
 function testTed(){
 	document.getElementById("test1").style.visibility = 'visible';
 	tedTimeout = setTimeout(tedSteal, 5000);
-}
-//if user fails to click,this function takes 25% of their points
-function tedSteal(){
-	geekAmount = Number(localStorage.getItem("geekAmount"));
-	geekAmount *= 0.75;
-	localStorage.setItem("geekAmount", geekAmount);
-	document.getElementById("test1").style.visibility = 'hidden';
-	tedAppearTimeout = setTimeout(testTed, Math.floor(Math.random() * (1800000 - 300000) ) + 300000);
-}
-//when ted is clicked the timeout is cleared and a new random timer for his appearance is set
-function tedStop(){
-	clearTimeout(tedTimeout);
-	document.getElementById("test1").style.visibility = 'hidden';
-	tedAppearTimeout = setTimeout(testTed, Math.floor(Math.random() * (1800000 - 300000) ) + 300000);
 }
 function geekClick() {
 	console.log(Math.pow((1*Math.pow(1.15, amountId0))*amountId3,0.95+(amountId4/20)));
@@ -129,7 +99,7 @@ function pageLoad(){
 	}
 	clockFunction();
 }
-//adds points per every tick (100ms),values are divided by 10 so symbolize per second increases
+//adds points per every tick (100ms),values are divided by 10 to symbolize per second increases
 function tick() {
 	geekAmount += Math.pow(((((1*amountId1) + (3*amountId2))/10)*amountId3),0.95+(amountId4/20));
     document.getElementById("amountDisplay").innerHTML = (Number(geekAmount).toFixed(2));
@@ -159,7 +129,7 @@ function clockFunction() {
   }
 }
 setInterval(clockFunction,1000);
-//resets values...array update coming soon + 2 weeks
+//resets values
 function reset() {
 	for(i = 0;i<savedValues.length-1;i++){
 		localStorage.setItem(savedValues[i].name, savedValues[i].value);
@@ -203,6 +173,7 @@ function deleteSpanText(){
 }
 */
 //picks random news ticker content from array,matches with length from second array to make animation length. works by deleting and adding new spans for smooth transition experience and so it doesnt change mid-transition (took a while to fix,even though its a simple concept,I guess it took a moment to realize)
+//I should really just merge the arrays into one single array that has objects storing both the content and length (or just content,length can be calculated). leaving for fix later,sorry future me
 function newNewsPicker(){
 	document.getElementById("textScroll").remove();
 	const createSpan = document.createElement('span');
@@ -234,52 +205,37 @@ function newNewsPicker(){
 	  "'And also if you could stop writing 'death to pedophiles' on all the whiteboards,that would be great. Promoting violence is so vulgar.' 'But don't all pedophiles deserve to die?' 'Nonsense! Nobody deserves to die.' 'How peaceful of you...'",
 	  "I can write whatever I want here so I'll recommend a game to actually play (we both know this is a shit project that I'm doing to maybe have a home-grown clicker game for playing at school,so the quality is so-so). Have you heard of...drumroll please...Class of '09? It's so peak. Please play it if you haven't. The humor is quite vulgar but it's peak. Very very peak. Nicole is the best,death to the desciple of Epstein,Mr.Counselor.",
 	  "'Uhhhh...nonāc Neretas krustcelēs,neskaties atpakaļ. Also hellhive iznāks pēc 3 sekundēm. If I see one more limboegg reference I'm cancelling all hellhive development,creating a situation where limboegg can't exist.' - Aimens 'Netanyahu' Vēveris",
-	  "The UI update is coming very soon,infact it's actually bundled together with another product that's gonna come out soon,sort of a 2 in 1 deal. The UI update is coming packaged with Hellhive and LimboEgg 3. This has been confirmed by Aimens Vēveris,who mentioned that his favorite part of development was writing Limboegg 3's story."
-	];
-	const newsLength = [
-	  17,
-	  23,
-	  17,
-	  42,
-	  47,
-	  64,
-	  56,
-	  175,
-	  232,
-	  305,
-	  99,
-	  30,
-	  66,
-	  78,
-	  27,
-	  108,
-	  119,
-	  79,
-	  92,
-	  212,
-	  200,
-	  39,
-	  83,
-	  32,
-	  55
+	  "The UI update is coming very soon,infact it's actually bundled together with another product that's gonna come out soon,sort of a 2 in 1 deal. The UI update is coming packaged with Hellhive and LimboEgg 3. This has been confirmed by Aimens Vēveris,who mentioned that his favorite part of development was writing Limboegg 3's story.",
+	  "Freude, schöner Götterfunken, Tochter aus Elysium, Wir betreten feuertrunken, Himmlische, den Heiligtum. Deine Zauber binden wieder, Was die Mode streng geteilt, Alle Menschen werden Brüder, Wo dein sanfter Flügel weilt.  Seid umschlungen Millionen! Diesen Kuß der ganzen Welt! Brüder - überm Sternenzelt Muß ein lieber Vater wohnen.  Wem der große Wurf gelungen, Eines Freundes Freund zu sein, Wer ein holdes Weib errungen, Mische seinen Jubel ein! Ja - wer auch nur eine Seele Sein nennt auf dem Erdenrund! Und wer's nie gekonnt, der stehle Weinend sich aus diesem Bund! ",
+	  "Drei Pfeile zerspalten wie Blitze die Nacht Wo bist du, du Lump, der den Freund umgebracht? National? National? National? So schreist du der nur sich selbst anerkennt Uns alle beschimpft und Verräter nennt National? Dich Lüge trifft der erste Strahl Flieg, Pfeil, triff, Hammer Rote Fahnen, wehet ins Land Eiserne Front! Eiserne Front! Eiserne Front! Flieg, Pfeil, triff, Hammer unsrеr Hand Flieg, Pfeil, triff, Hammer Rotе Fahnen, wehet ins Land Eiserne Front! Eiserne Front! Eiserne Front! Flieg, Pfeil, triff, Hammer unsrer Hand Drei Pfeile zerspalten wie Blitze die Nacht Wo bist du, du Schuft, der den Diebstahl gemacht? Sozialist? Sozialist? Sozialist? So nennst du dich, der mit den Reichen paktiert Dem Hohenzollernsohn hast du dich alliiert Sozialist? Dich Lüge trifft der zweite Strahl Flieg, Pfeil, triff, Hammer Rote Fahnen, wehet ins Land Eiserne Front! Eiserne Front! Eiserne Front! Flieg, Pfeil, triff, Hammer unsrer Hand Flieg, Pfeil, triff, Hammer Rote Fahnen, wehet ins Land Eiserne Front! Eiserne Front! Eiserne Front! Flieg, Pfeil, triff, Hammer unsrer Hand Drei Pfeile zerspalten wie Blitze die Nacht Wo bist du, du Pest, die sich ausgedacht? Pg! Pg! Pg! Du dienst nur als Vorspann dem Schlotbaron Er zahlt dir dicke Gelder, Million um Million Pg! Dich Lüge trifft der dritte Strahl Flieg, Pfeil, triff, Hammer Rote Fahnen, wehet ins Land Eiserne Front! Eiserne Front! Eiserne Front! Flieg, Pfeil, triff, Hammer unsrer Hand Flieg, Pfeil, triff, Hammer Rote Fahnen, wehet ins Land Eiserne Front! Eiserne Front! Eiserne Front! Flieg, Pfeil, triff, Hammer unsrer Hand"
 	];
 	let newsRandomElement = Math.floor(Math.random() * news.length);
-	let wordCount = newsLength[newsRandomElement];
+	let wordCount = news[newsRandomElement].length/8;
+	if(wordCount < 20){
+		wordCount += 10;
+	}
 	console.log(news[newsRandomElement]);
+	console.log(wordCount);
 	document.getElementById("textScroll").innerHTML = news[newsRandomElement];
 	document.getElementById("textScroll").style.animationDuration = (wordCount + "s");
 	document.getElementById("textScroll").style.transform = "translateX(-100%)";
 	setTimeout(newNewsPicker,Number(wordCount) * 1000);
 }
+function changeMenuItem(name){
+	const menus = document.querySelectorAll(".changeableMenu");
+	for(i = 0;i<menus.length;i++){
+		if(menus[i] !== document.getElementById(name+"Menu")){
+			menus[i].style.visibility = "hidden";
+		}
+	}
+	if(document.getElementById(name+"Menu").style.visibility == "hidden"){
+			document.getElementById(name+"Menu").style.visibility = "visible";
+		}
+		else{
+		document.getElementById(name+"Menu").style.visibility = "hidden";
+	}
+}
 newNewsPicker();
 //setInterval(save,60000);
 setInterval(saveTick,1000);
-//idea i had while writing comments
-//writing it down here so i dont forget,fingers crossed this is deleted soon enough due to successful implementation
-//in short,each upgrade (very useful in the future) has its own ID attached to it in the HTML side,which is then fed into a price array for fetching base prices
-//upgrade amounts can then be fed into loop that calculates price using upgrade amount,thus removing need to save prices
-//same can also be applied for max amounts,its all one big loop with saved values in arrays
-//thank you for the tip teach,saving is gonna be declutered this way,and thats not even what you intended
-
-//me from 45 minutes later - ive gotta get that array bro the power function proved it
-//20 minutes later - fuck the power function. unfortunetely its the stepping stone for removing cost amounts from saving and making the big functions
+//Thank you,but we were occupied by the bad saving logic for 10 long years,and we have not forgotten how terrible that is.
